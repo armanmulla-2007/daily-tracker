@@ -1,60 +1,35 @@
 #include<stdio.h>
 int main(){
-   int Fajr,Zuhr,Asr,Maghrib,Isha;
-   int coding,github,Quran,study;
-   
-   printf("\n\n~~~~~~~DAILY TRACKER~~~~~~~");
-   
-   printf("\n\n\n  Marking Methods : (1=Done, 0=Not)");
+  int task[9];
+  char *name[]={"Fajr","Zuhr","Asr","Maghrib","Isha","coding","github","Quran","study"};
 
-   printf("\n\n Fajr:");
-   scanf("%d",&Fajr);
+  int score=0;
 
-   printf("\n Zuhr:");
-   scanf("%d",&Zuhr);
+  printf("\n ~~~~~~DAILY TRACKEER~~~~~~");
+  printf("\n Marking Methods : 1=Done, 0=Not Done");
 
-   printf("\n Asr:");
-   scanf("%d",&Asr);
+  for(int i=0;i<9;i++){
+     printf("\n%s:",name[i]);
+     scanf("%d",&task[i]);
+     score+=task[i];
+  }
 
-   printf("\n Maghrib:");
-   scanf("%d",&Maghrib);
+  printf("\n ~~~~~~DAILY REPORT~~~~~~");
+  printf("\n Namaz:%s",(task[0] && task[1] && task[2] && task[3] && task[4]) ? "Complete" : "Incomplete");
 
-   printf("\n Isha:");
-   scanf("%d",&Isha);
+  for(int i=5;i<9;i++){
+    printf("\n %s:%s",name[i],task[i] ? "Done" : "Not Done");
+  }
 
-   printf("\n Coding:");
-   scanf("%d",&coding);
+  printf("\n total score:%d",score);
 
-   printf("\n GitHub:");
-   scanf("%d",&github);
-
-   printf("\n Quran:");
-   scanf("%d",&Quran);
-
-   printf("\n Study:");
-   scanf("%d",&study);
-
-   printf("\n~~~~~~~DAILY REPORT~~~~~~~");
-   
-   printf("\n\n\n Namaz : %s\n", (Fajr && Zuhr && Asr && Maghrib && Isha) ? "Complete" : "Incomplete");
-   printf("\n Quran : %s\n", Quran ? "Done" : "Not Done");
-   printf("\n Coding : %s\n", coding ? "Done" : "Not Done");
-   printf("\n GitHub : %s\n", github ? "Done" : "Not Done");
-   printf("\n Study : %s\n", study ? "Done" : "Not Done");
-
-   int score=Fajr+Zuhr+Asr+Maghrib+Isha+Quran+coding+github+study;
-
-   printf("\n Total Score : %d",score);
-   
-   if(score>=8){
-      printf("\n Excellent Day!");
-   }
-   else if(score>=5 && score<8){
-      printf("\n Good, But need Improvement");
-   }
-   else{
-      printf("\n Focus more tomorrow!");
-   }
-return 0;
+  printf("\n ~~~~~~DAILY PROGRESS~~~~~~");
+  printf("\n %s",(score>=8) ? "Excellent day":
+                 (score<=8 && score>5) ? "Good, But need Improvement":
+                                         "Focus More Tomorrow");
+  return 0;
 }
+
    
+  
+
